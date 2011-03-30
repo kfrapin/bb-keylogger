@@ -1,0 +1,22 @@
+Date of creation : 30/03/2011
+Last update : 30/03/2011
+Author : Frapin Kevin
+
+Description:
+
+This file is the README file of the bb-keylogger project.
+
+This is a very small project developped in order to offer the possibility to people to log informations about their computer.
+
+I made it because I wanted a program able to help me to track my laptop in case of theft.
+
+This program is able to log in a file these informations :
+- the name of the computer
+- the time of the system (when the program is started)
+- the user who is logged (when the program is started)
+- the keystrokes (since the program has been started)
+
+In an other file (coming soon...) I'll explain how to use it, if you want to "protect" you from thieves.
+
+If you have any suggestions, or remarks, you can contact me: 
+kevin.frapin@gmail.com
