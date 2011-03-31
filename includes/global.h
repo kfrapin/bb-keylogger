@@ -49,7 +49,10 @@
 #define NB_VKS_ALTER_STREAM 5
 
 // Number of virtual keys that represent mathematical operators
-#define NB_VKS_MATH 6
+#define NB_VKS_MATH 9
+
+// Number of virtual keys that are also important
+#define NB_VKS_OTHERS 1
 
 // Virtual keys : A, Z, 0, 9
 #define VK_A 0x41
@@ -58,20 +61,52 @@
 #define VK_9 0x39
 
 //------------------------------------------------------------ GLOBAL VARIABLES
-// Virtual keys that alter the text stream (and the mapping text array)
-//   BACKSPACE, TABULATION, ENTER, INSERT, DELETE
-static int VKS_ALTER_STREAM [ NB_VKS_ALTER_STREAM ] = 
-	{ VK_BACK, VK_TAB, VK_RETURN, VK_INSERT, VK_DELETE  };
-
-static char * VKS_ALTER_STREAM_TXT [ NB_VKS_ALTER_STREAM ] = 
-	{ "<BACKSPACE>", "<TAB>", "<ENTER>", "<INSERT>", "<DEL>" };
-
-// Virtual keys that represent mathematical operators (and the mapping text array)
-static int VKS_MATH [ NB_VKS_MATH ] = 
-	{ VK_MULTIPLY, VK_ADD, VK_SEPARATOR, VK_SUBTRACT, VK_DECIMAL, VK_DIVIDE };
+// Virtual keys that alter the text stream
+static int VKS_ALTER_STREAM [ NB_VKS_ALTER_STREAM ] = { 
+	VK_BACK, 
+	VK_TAB, 
+	VK_RETURN, 
+	VK_INSERT, 
+	VK_DELETE  
+};
 	
-static char * VKS_MATH_TXT [ NB_VKS_MATH ] = 
-	{ "*", "+", "<ENTER>", "-", ".", "/" };
-	
+// Text to use in order to log the keys just above
+static char * VKS_ALTER_STREAM_TXT [ NB_VKS_ALTER_STREAM ] = { 
+	"<BACKSPACE>", 
+	"<TAB>", 
+	"<ENTER>", 
+	"<INSERT>", 
+	"<DEL>" 
+};
+
+// Virtual keys that represent mathematical operators
+static int VKS_MATH [ NB_VKS_MATH ] = { 	
+	VK_MULTIPLY, 
+	VK_ADD, VK_OEM_PLUS, 
+	VK_SUBTRACT, VK_OEM_MINUS, 
+	VK_DECIMAL, VK_OEM_PERIOD, 
+	VK_DIVIDE, 
+	VK_SEPARATOR 
+};
+
+// Text to use in order to log the keys just above
+static char * VKS_MATH_TXT [ NB_VKS_MATH ] = { 
+	"*", 
+	"+", "+", 
+	"-", "-", 
+	".", ".", 
+	"/", 
+	"<ENTER>"
+};
+
+// Others virtual keys that are also considered important
+static int VKS_OTHERS [ NB_VKS_OTHERS ] = { 	
+	VK_SPACE
+};
+
+// Text to use in order to log the keys just above
+static char * VKS_OTHERS_TXT [ NB_VKS_OTHERS ] = { 
+	" "
+};
 	
 #endif /* GLOBAL_H */

