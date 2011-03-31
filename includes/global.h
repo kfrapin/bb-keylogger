@@ -48,6 +48,9 @@
 // Number of virtual keys that alter the text
 #define NB_VKS_ALTER_STREAM 5
 
+// Number of virtual keys that represent mathematical operators
+#define NB_VKS_MATH 6
+
 // Virtual keys : A, Z, 0, 9
 #define VK_A 0x41
 #define VK_Z 0x5A
@@ -55,13 +58,20 @@
 #define VK_9 0x39
 
 //------------------------------------------------------------ GLOBAL VARIABLES
-// Virtual keys that alter the text stream
-// BACKSPACE, TABULATION, ENTER, INSERT, DELETE
+// Virtual keys that alter the text stream (and the mapping text array)
+//   BACKSPACE, TABULATION, ENTER, INSERT, DELETE
 static int VKS_ALTER_STREAM [ NB_VKS_ALTER_STREAM ] = 
 	{ VK_BACK, VK_TAB, VK_RETURN, VK_INSERT, VK_DELETE  };
-	
-// Text replacing virtual keys that alter the text stream
+
 static char * VKS_ALTER_STREAM_TXT [ NB_VKS_ALTER_STREAM ] = 
 	{ "<BACKSPACE>", "<TAB>", "<ENTER>", "<INSERT>", "<DEL>" };
 
+// Virtual keys that represent mathematical operators (and the mapping text array)
+static int VKS_MATH [ NB_VKS_MATH ] = 
+	{ VK_MULTIPLY, VK_ADD, VK_SEPARATOR, VK_SUBTRACT, VK_DECIMAL, VK_DIVIDE };
+	
+static char * VKS_MATH_TXT [ NB_VKS_MATH ] = 
+	{ "*", "+", "<ENTER>", "-", ".", "/" };
+	
+	
 #endif /* GLOBAL_H */
