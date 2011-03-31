@@ -45,8 +45,20 @@
 // Key has been pressed
 #define KEY_PRESSED_STATE 0x0001
 
+// Virtual keys : A, Z, 0, 9
+#define VK_A 0x41
+#define VK_Z 0x5A
+#define VK_0 0x30
+#define VK_9 0x39
+
 //------------------------------------------------------------ GLOBAL VARIABLES
-
-
+// Virtual keys that alter the text stream
+// BACKSPACE, TABULATION, ENTER, INSERT, DELETE
+static int VKS_ALTER_STREAM [ 5 ] = 
+	{ VK_BACK, VK_TAB, VK_RETURN, VK_INSERT, VK_DELETE  };
+	
+// Text replacing virtual keys that alter the text stream
+static char * VKS_ALTER_STREAM_TXT [ 5 ] = 
+	{ "<BACSPACE>", "<ENTER>", "<INSERT>", "<DELETE>" };
 
 #endif /* GLOBAL_H */

