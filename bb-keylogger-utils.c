@@ -16,7 +16,7 @@
 */
 
 /*
-* File:   bb-keylogger.c
+* File:   bb-keylogger-utils.c
 * Author: Frapin Kevin
 * Date:   22/03/2011
 *

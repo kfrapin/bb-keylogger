@@ -16,7 +16,7 @@
 */
 
 /*
-* File:   global.h
+* File:   bb-keylogger-globals.h
 * Author: Frapin Kevin
 * Date:   23/03/2011
 *
