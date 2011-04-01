@@ -22,8 +22,8 @@
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* File containing all the functions used to retrieve informations from the 
-* keyboard.
+* File containing all the functions used to retrieve and log informations from 
+* the keyboard.
 * -----------------------------------------------------------------------------
 */
 

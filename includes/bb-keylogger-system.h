@@ -16,31 +16,28 @@
 */
 
 /*
-* File:   bb-keylogger-keyboard.h
+* File:   bb-keylogger-system.h
 * Author: Frapin Kevin
 * Date:   31/03/2011
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
 * File containing the declarations of all the functions used to retrieve and
-* log informations from the keyboard.
+* log informations about the system.
 * -----------------------------------------------------------------------------
 */
 
-#ifndef BB_KEYLOGGER_KEYBOARD_H
-#define BB_KEYLOGGER_KEYBOARD_H
+#ifndef BB_KEYLOGGER_SYSTEM_H
+#define BB_KEYLOGGER_SYSTEM_H
 
 //------------------------------------------------------------- INCLUDES SYSTEM
 #include <stdio.h>
 
 //------------------------------------------------------------------- FUNCTIONS
-
-void log_alphabetic_keystrokes( FILE * log_file );
-void log_keystrokes( FILE * log_file );
-void log_mathematical_operators_keystrokes( FILE * log_file );
-void log_numeric_keystrokes( FILE * log_file, char * keyboard_state );
-void log_others_keystrokes( FILE * log_file );
-void log_stream_keystrokes( FILE * log_file );
+void log_system_infos( FILE * log_file );
+void log_computer_infos( FILE * log_file );
+void log_user_infos( FILE * log_file );
 
 
-#endif /* BB_KEYLOGGER_KEYBOARD_H */
+
+#endif /* BB_KEYLOGGER_SYSTEM_H */

