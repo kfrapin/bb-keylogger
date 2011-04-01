@@ -38,12 +38,23 @@
 #include "includes/global.h"
 
 //------------------------------------------------------------------- FUNCTIONS
+/*
+* Function that log informations about the system :
+*  - call log_computer_infos
+*  - call log_user_infos
+*/
 void log_system_infos( FILE * log_file )
 {
 	log_computer_infos( log_file );
 	log_user_infos( log_file );
 }
 
+/*
+* Function that log informations about the computer :
+*  - log the computer name
+*  - log the system time
+*  - log the local time
+*/
 void log_computer_infos( FILE * log_file )
 {
 	// Get infos : computer name, system time, local time
@@ -69,6 +80,10 @@ void log_computer_infos( FILE * log_file )
 			local_time.wHour, local_time.wMinute );
 }
 
+/*
+* Function that log informations about the logged user :
+*  - log the username
+*/
 void log_user_infos( FILE * log_file )
 {
 	// Get infos : username

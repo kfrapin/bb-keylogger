@@ -38,7 +38,7 @@
 #include <winuser.h>
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
-#include "includes/bb-keylogger.h"
+#include "includes/bb-keylogger-utils.h"
 #include "includes/global.h"
 
 //------------------------------------------------------------------------ MAIN
