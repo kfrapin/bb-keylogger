@@ -35,7 +35,7 @@
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
 #include "includes/bb-keylogger-keyboard.h"
-#include "includes/global.h"
+#include "includes/bb-keylogger-globals.h"
 
 //------------------------------------------------------------------- FUNCTIONS
 

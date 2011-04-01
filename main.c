@@ -39,7 +39,7 @@
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
 #include "includes/bb-keylogger-utils.h"
-#include "includes/global.h"
+#include "includes/bb-keylogger-globals.h"
 
 //------------------------------------------------------------------------ MAIN
 
