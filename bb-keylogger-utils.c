@@ -80,10 +80,7 @@ FILE * open_file( char * log_file_name )
 	{
 		exit( EXIT_FAILURE );
 	}
-	
-	// No buffer, I/O ASAP
-	setbuf ( log_file, NULL );
-	
+
 	return log_file;
 }
 

@@ -22,7 +22,7 @@
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* File containing all thedeclarations of the  utils functions used by the 
+* File containing all the declarations of the utils functions used by the 
 * program.
 * -----------------------------------------------------------------------------
 */
