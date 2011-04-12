@@ -1,9 +1,13 @@
-﻿Date of creation : 30/03/2011
+﻿   BaBy Keylogger Project
+-----------------------------
+Date of creation : 30/03/2011
 Last update : 30/03/2011
 Author : Frapin Kevin
+-----------------------------
 
+------------
 Description:
-
+------------
 This file is the README file of the bb-keylogger project.
 
 This is a very small project developped in order to offer the possibility to people to log informations about their computer.
@@ -16,7 +20,13 @@ This program is able to log in a file these informations :
 - the user who is logged (when the program is started)
 - the keystrokes (since the program has been started)
 
-In an other file (coming soon...) I'll explain how to use it, if you want to "protect" you from thieves.
+------
+Wiki :
+------
+See the wiki for more details about the keystrokes and the log file.
+In addition there's a wiki page explaining you HOW TO install the keylogger.
 
-If you have any suggestions, or remarks, you can contact me: 
+-----------------------------------------------------------
+If you have any suggestions, or remarks, you can contact me:
+------------------------------------------------------------
 kevin.frapin@gmail.com
